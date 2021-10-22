@@ -29,7 +29,7 @@ const app = Express();
 app.use(Express.json());
 
 app.use(cors({
-    origin: 'http://localhost:3000'
+    origin: 'https://sicabullaback.herokuapp.com/'||'http://localhost:3000'
 }));
 
 // se trae el codigo del quickstart de la pagina auth0
