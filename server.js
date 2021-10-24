@@ -60,8 +60,8 @@ const main = () => {
         }
         conexion = db.db('MaestroDeVentas');
         console.log('Conexion exitosa');
-        return app.listen(5000, () => {
-            console.log('Escuchando puerto 5000');
+        return app.listen(port, () => {
+            console.log(`Escuchando puerto ${port}`);
         });
     });
 };
