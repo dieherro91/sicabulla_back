@@ -6,6 +6,9 @@ import Express from 'express';
 import { MongoClient, ObjectId } from 'mongodb';
 import cors from 'cors'
 
+dotenv.config({path:'./env'})
+const port=process.env.PORT || 5000;
+
 //Conexion de usuario con mongo
 const stringConexion =
     'mongodb+srv://admin:murillo12345678@proyectosicabulla.obypw.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
