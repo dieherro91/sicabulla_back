@@ -71,7 +71,9 @@ const main = () => {
 //middleware para usuario inactivo
 app.use(async (req, res, next) => {
     console.log('hallo')
-    try {print(req);
+    try {
+        print("lac asa rosa da ");
+        print(req);
         const token = req.headers.authorization.split('Bearer ')[1];
         print(token);
         const user = jwt_decode(token)['https://sicabullafront.herokuapp.com/userData'];
