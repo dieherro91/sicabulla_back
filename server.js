@@ -71,10 +71,13 @@ const main = () => {
 //middleware para usuario inactivo
 app.use(async (req, res, next) => {
     console.log('hallo')
-    try {
+    try {print(req);
         const token = req.headers.authorization.split('Bearer ')[1];
-        const user = jwt_decode(token)['https://sicabullafront.herokuapp.com/userData']
+        print(token);
+        const user = jwt_decode(token)['https://sicabullafront.herokuapp.com/userData'];
+        print(user);
         await conexion.collection('usuarios').findOne({ email: user.email }, async (err, response) => {
+            print("test ....");
             //console.log("respuesta es:", response)
             if (response) {
                 if (response.estado === 'inactivo') {
