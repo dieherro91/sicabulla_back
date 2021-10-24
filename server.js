@@ -75,7 +75,7 @@ app.use(async (req, res, next) => {
     console.log('hallo')
     try {
         const token = req.headers.authorization.split('Bearer ')[1];
-        const user = jwt_decode(token)['http://localhost/userData']
+        const user = jwt_decode(token)['https://sicabullafront.herokuapp.com/userData']
         await conexion.collection('usuarios').findOne({ email: user.email }, async (err, response) => {
             //console.log("respuesta es:", response)
             if (response) {
@@ -279,7 +279,7 @@ app.get('/usuarios/self', async (req, callback) => {
     console.log('Alguien hizo get en la ruta /Usuarios/self');
     //6.1 obtener datos del ususario    desde el token
     const token = req.headers.authorization.split('Bearer ')[1];
-    const user = jwt_decode(token)['http://localhost/userData']
+    const user = jwt_decode(token)['https://sicabullafront.herokuapp.com/userData']
     //console.log("token", user)
     //buecar el correo en la base de datos/* */
     await conexion.collection('usuarios').findOne({ email: user.email }, async (err, response) => {
