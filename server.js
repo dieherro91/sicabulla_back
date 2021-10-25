@@ -6,8 +6,14 @@ import Express from 'express';
 import { MongoClient, ObjectId } from 'mongodb';
 import cors from 'cors'
 
+<<<<<<< HEAD
 dotenv.config({path:'./env'})
 const port=process.env.PORT || 5000;
+=======
+
+const port=process.env.PORT || 5000;
+
+>>>>>>> main
 //Conexion de usuario con mongo
 const stringConexion =
     'mongodb+srv://admin:murillo12345678@proyectosicabulla.obypw.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
@@ -30,9 +36,13 @@ const app = Express();
 
 app.use(Express.json());
 
+<<<<<<< HEAD
 app.use(cors({
     origin: 'https://sicabullafront.herokuapp.com/'
 }));
+=======
+app.use(cors());
+>>>>>>> main
 
 // se trae el codigo del quickstart de la pagina auth0
 // https://manage.auth0.com/dashboard/us/misiontic-sicabulla/apis/61679f016bde8b004026c63a/quickstart
@@ -63,7 +73,11 @@ const main = () => {
         conexion = db.db('MaestroDeVentas');
         console.log('Conexion exitosa');
         return app.listen(port, () => {
+<<<<<<< HEAD
             console.log('Escuchando puerto ',port);
+=======
+            console.log(`Escuchando puerto ${port}`);
+>>>>>>> main
         });
     });
 };
@@ -73,18 +87,34 @@ const main = () => {
 app.use(async (req, res, next) => {
     console.log('hallo')
     try {
+        console.log("lac asa rosa da ");
         const token = req.headers.authorization.split('Bearer ')[1];
-        const user = jwt_decode(token)['http://localhost/userData']
+        const user = jwt_decode(token)['http://localhost/userData'];
+        //console.log("despues del toke...")
+        //console.log(user);
+        //console.log("pase por aqui..");
+        //console.log(user.email);
+        console.log("confirmando email...");
         await conexion.collection('usuarios').findOne({ email: user.email }, async (err, response) => {
+            console.log("test ....");
             //console.log("respuesta es:", response)
             if (response) {
                 if (response.estado === 'inactivo') {
                     console.log("errorcito")
                     res.sendStatus(401);
+                    res.end();
                 } else {
+                    res.sendStatus(200);
+                    res.end();
+                    console.log(res)
                     console.log("hallooosdaskdaks")
+                    return;
+                    //next();
                 }
 
+            }
+            else {
+                next();
             }
         });
     } catch {
