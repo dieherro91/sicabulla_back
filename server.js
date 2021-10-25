@@ -11,15 +11,6 @@ import cors from 'cors'
 
 const port=process.env.PORT || 5000;
 
-app.set( 'port', ( process.env.PORT || 5000 ));
-
-// Start node server
-app.listen( app.get( 'port' ), function() {
-  console.log( 'Node server is running on port ' + app.get( 'port' ));
-  });
-
-
-
 //Conexion de usuario con mongo
 const stringConexion =
     'mongodb+srv://admin:murillo12345678@proyectosicabulla.obypw.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
@@ -87,21 +78,20 @@ app.use(async (req, res, next) => {
         //console.log("lac asa rosa da ");
         const token = req.headers.authorization.split('Bearer ')[1];
         const user = jwt_decode(token)['http://localhost/userData'];
-        console.log("confirmando email...");
+        //console.log("confirmando email...");
         await conexion.collection('usuarios').findOne({ email: user.email }, async (err, response) => {
-            console.log("WQEQWEQW")
-            console.log(user.email)
+            //console.log("WQEQWEQW")
+            //console.log(user.email)
             //console.log("respuesta es:", response)
             if (response) {
-                console.log(response.estado)
+                //console.log(response.estado)
                 if (response.estado === 'inactivo') {    
                     res.sendStatus(401);  
                 } else { 
-                    console.log("the res 4");
-                    res.statusMessage = "Current password does not match";
-                    res.status(200).end();
-                    console.log("the res fin");
-                    console.log(res)
+                    console.log("successs");
+                    
+                    res.sendStatus(200)
+                    
                     next()                 
                 }
             }
