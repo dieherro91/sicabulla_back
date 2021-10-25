@@ -7,6 +7,8 @@ import { MongoClient, ObjectId } from 'mongodb';
 import cors from 'cors'
 
 
+
+
 const port=process.env.PORT || 5000;
 
 //Conexion de usuario con mongo
@@ -32,6 +34,9 @@ const app = Express();
 app.use(Express.json());
 
 app.use(cors());
+var server = require('https').Server(app); 
+var io = require('socket.io')(server);
+
 
 // se trae el codigo del quickstart de la pagina auth0
 // https://manage.auth0.com/dashboard/us/misiontic-sicabulla/apis/61679f016bde8b004026c63a/quickstart
