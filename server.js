@@ -75,10 +75,7 @@ app.use(async (req, res, next) => {
         console.log("lac asa rosa da ");
         const token = req.headers.authorization.split('Bearer ')[1];
         const user = jwt_decode(token)['http://localhost/userData'];
-        //console.log("despues del toke...")
-        //console.log(user);
-        //console.log("pase por aqui..");
-        //console.log(user.email);
+
         console.log("confirmando email...");
         await conexion.collection('usuarios').findOne({ email: user.email }, async (err, response) => {
             console.log("test ....");
@@ -91,7 +88,7 @@ app.use(async (req, res, next) => {
                 } else {
                     res.sendStatus(200);
                     res.end();
-                    console.log(res)
+                    //console.log(res)
                     console.log("hallooosdaskdaks")
                     return;
                     //next();
