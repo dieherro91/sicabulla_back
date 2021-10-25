@@ -72,14 +72,14 @@ const main = () => {
 app.use(async (req, res, next) => {
     console.log('hallo')
     try {
-        print("lac asa rosa da ");
-        print(req);
+        console.log("lac asa rosa da ");
+        console.log(req);
         const token = req.headers.authorization.split('Bearer ')[1];
-        print(token);
+        console.log(token);
         const user = jwt_decode(token)['https://sicabullafront.herokuapp.com/userData'];
-        print(user);
+        console.log(user);
         await conexion.collection('usuarios').findOne({ email: user.email }, async (err, response) => {
-            print("test ....");
+            console.log("test ....");
             //console.log("respuesta es:", response)
             if (response) {
                 if (response.estado === 'inactivo') {
