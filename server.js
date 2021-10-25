@@ -84,19 +84,11 @@ app.use(async (req, res, next) => {
                 console.log("heroku")
                 if (response.estado === 'inactivo') {
                     console.log("errorcito")
+                    console.log(response);
                     res.sendStatus(401);
                     
                 } else {
-                    console.log("daasdasda")
-                    //res.sendStatus(200);
-                    //res.end();
-                    //console.log(res)
-                    res.status(200).send("User Page");
-                    console.log("hallooosdaskdaks")
-                    
-
-                    
-                    next();
+                    next()                 
                 }
 
             }
@@ -107,7 +99,6 @@ app.use(async (req, res, next) => {
     } catch {
         console.log("something happend")
     }
-
     next()
 });
 
