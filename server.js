@@ -72,41 +72,6 @@ const main = () => {
 };
 
 
-
-//middleware para usuario inactivo
-app.use(async (req, res, next) => {
-
-    try {
-        //console.log("lac asa rosa da ");
-        const token = req.headers.authorization.split('Bearer ')[1];
-        const user = jwt_decode(token)['http://localhost/userData'];
-        console.log("confirmando email...");
-        await conexion.collection('usuarios').findOne({ email: user.email }, async (err, response) => {
-            //console.log("WQEQWEQW")
-            console.log(user.email)
-            //console.log("respuesta es:", response)
-            if (response) {
-                //console.log(response.estado)
-                if (response.estado === 'inactivo') {    
-                    res.sendStatus(401);  
-                } else { 
-                    console.log("successs");
-                    
-                    //res.sendStatus(200)
-                    res.json(response);
-                    next()                 
-                }
-            }
-            else {
-                next();
-            }
-        });
-    } catch {
-        console.log("something happend")
-    }
-    next()
-});
-
  
 
 
@@ -126,8 +91,38 @@ app.get('/ventas', (req, res) => {
         });
 });
 app.get('/', function (req, res) {
-    res.json({'estado':'pendiente'});
-    res.sendStatus(200);
+
+    try {
+        //console.log("lac asa rosa da ");
+        const token = req.headers.authorization.split('Bearer ')[1];
+        const user = jwt_decode(token)['http://localhost/userData'];
+        console.log("confirmando email...");
+        await conexion.collection('usuarios').findOne({ email: user.email }, async (err, response) => {
+            //console.log("WQEQWEQW")
+            console.log(user.email)
+            //console.log("respuesta es:", response)
+            if (response) {
+                //console.log(response.estado)
+                if (response.estado === 'inactivo') {    
+                    res.sendStatus(401);  
+                } else { 
+                    console.log("successs");
+                    
+                    //res.sendStatus(200)
+                    res.json(response);
+                    res.sendStatus(200);             
+                }
+            }
+            else {
+
+            }
+        });
+    } catch {
+        console.log("something happend")
+    }
+
+    //res.json({'estado':'pendiente'});
+    
 })
 app.post('/ventas/nuevo', (req, res) => {
     //mostrar llaves
