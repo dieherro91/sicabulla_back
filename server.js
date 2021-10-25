@@ -98,8 +98,8 @@ app.use(async (req, res, next) => {
                     
                     console.log("the res 4");
                     res.end()
-                    res.status(200).end()
-                    res.sendStatus(200)
+                    //res.status(200).end()
+                    res.sendStatus(200).end()
                     console.log(res)
                     console.log("saasda 4");
                     next()                 
