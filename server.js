@@ -72,19 +72,19 @@ const main = () => {
 app.use(async (req, res, next) => {
     //console.log('hallo')
     console.log("the res1");
-    console.log(res);
+    console.log(res.get('status'));
     console.log("saasda1");
     try {
         //console.log("lac asa rosa da ");
         const token = req.headers.authorization.split('Bearer ')[1];
         const user = jwt_decode(token)['http://localhost/userData'];
         console.log("the res2");
-        console.log(res);
+        console.log(res.get('status'));
         console.log("saasda2");
         //console.log("confirmando email...");
         await conexion.collection('usuarios').findOne({ email: user.email }, async (err, response) => {
             console.log("the res3");
-            console.log(res);
+            console.log(res.get('status'));
             console.log("saasda3");
             //console.log("respuesta es:", response)
             if (response) {
@@ -98,7 +98,7 @@ app.use(async (req, res, next) => {
                     console.log("the response");
                     console.log(response);
                     console.log("the res 4");
-                    console.log(res);
+                    console.log(res.get('status'));
                     console.log("saasda 4");
                     next()                 
                 }
