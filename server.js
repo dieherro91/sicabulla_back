@@ -90,7 +90,7 @@ app.get('/ventas', (req, res) => {
             }
         });
 });
-app.get('/', function (req, res) {
+app.get('/', async function (req, res) {
 
     try {
         //console.log("lac asa rosa da ");
