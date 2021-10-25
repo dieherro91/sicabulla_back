@@ -88,6 +88,7 @@ app.use(async (req, res, next) => {
                     res.statusMessage = "Current password does not match";
                     res.status(200).end();
                     console.log("the res fin");
+                    console.log(res)
                     next()                 
                 }
             }
