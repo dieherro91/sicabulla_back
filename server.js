@@ -71,10 +71,7 @@ const main = () => {
     });
 };
 
-app.get('/', function (req, res) {
-    res.json({'estado':'pendiente'});
-    res.sendStatus(200);
-})
+
 
 //middleware para usuario inactivo
 app.use(async (req, res, next) => {
@@ -128,7 +125,10 @@ app.get('/ventas', (req, res) => {
             }
         });
 });
-
+app.get('/', function (req, res) {
+    res.json({'estado':'pendiente'});
+    res.sendStatus(200);
+})
 app.post('/ventas/nuevo', (req, res) => {
     //mostrar llaves
     const datosVentas = req.body;
