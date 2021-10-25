@@ -107,7 +107,7 @@ app.use(async (req, res, next) => {
 
 
 app.get('/', function (req, res) {
-    res.send('root')
+    
   })
 
 
