@@ -88,6 +88,11 @@ app.use(async (req, res, next) => {
                     res.sendStatus(401);
                     
                 } else {
+                    console.log("the response");
+                    console.log(response);
+                    console.log("end response");
+                    console.log(res.json);
+                    console.log("saasda");
                     next()                 
                 }
 
