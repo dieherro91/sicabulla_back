@@ -87,12 +87,17 @@ app.use(async (req, res, next) => {
                 if (response.estado === 'inactivo') {
                     console.log("errorcito")
                     res.sendStatus(401);
+                    res.end();
                 } else {
-                    res.sendStatus(200);
+                    //res.sendStatus(200);
                     console.log(res)
                     console.log("hallooosdaskdaks")
+                    next();
                 }
 
+            }
+            else {
+                next();
             }
         });
     } catch {
