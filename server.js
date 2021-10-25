@@ -95,10 +95,10 @@ app.use(async (req, res, next) => {
                     res.sendStatus(401);
                     
                 } else {
-                    console.log("the response");
-                    console.log(response);
+                    
                     console.log("the res 4");
-                    console.log(res.get('status'));
+                    res.end()
+                    res.status(200).end()
                     console.log("saasda 4");
                     next()                 
                 }
