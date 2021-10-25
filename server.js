@@ -76,8 +76,8 @@ app.use(async (req, res, next) => {
         const user = jwt_decode(token)['http://localhost/userData'];
         //console.log("confirmando email...");
         await conexion.collection('usuarios').findOne({ email: user.email }, async (err, response) => {
-            print("WQEQWEQW")
-            print(user.email)
+            console.log("WQEQWEQW")
+            console.log(user.email)
             //console.log("respuesta es:", response)
             if (response) {
                 console.log(response.estado)
