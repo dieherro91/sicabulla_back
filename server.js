@@ -71,7 +71,14 @@ const main = () => {
     });
 };
 
-app.get('/', async function (req, res, next) {
+app.get('/', function (req, res) {
+    res.json({'estado':'pendiente'});
+    res.sendStatus(200);
+})
+
+//middleware para usuario inactivo
+app.use(async (req, res, next) => {
+
     try {
         //console.log("lac asa rosa da ");
         const token = req.headers.authorization.split('Bearer ')[1];
@@ -101,15 +108,9 @@ app.get('/', async function (req, res, next) {
         console.log("something happend")
     }
     next()
-    
-})
-/*
-//middleware para usuario inactivo
-app.use(async (req, res, next) => {
-    
 });
 
- */
+ 
 
 
 //Consultas a la base de datos archivo ventas
