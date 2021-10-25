@@ -74,7 +74,7 @@ app.use(async (req, res, next) => {
     try {
         console.log("lac asa rosa da ");
         const token = req.headers.authorization.split('Bearer ')[1];
-        const user = jwt_decode(token)['https://sicabullafront.herokuapp.com/userData'];
+        const user = jwt_decode(token)['http://localhost/userData'];
         console.log("despues del toke...")
         console.log(user);
         console.log("pase por aqui..");
