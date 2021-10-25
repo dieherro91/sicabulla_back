@@ -97,11 +97,8 @@ app.use(async (req, res, next) => {
                 } else {
                     
                     console.log("the res 4");
-                    res.end()
-                    //res.status(200).end()
-                    res.sendStatus(200).end()
-                    console.log(res)
-                    console.log("saasda 4");
+                    res.writeHead( 200, 'Current password does not match', {'content-type' : 'text/plain'});
+                    res.end( 'Current value does not match');
                     next()                 
                 }
 
