@@ -85,15 +85,18 @@ app.use(async (req, res, next) => {
                 if (response.estado === 'inactivo') {
                     console.log("errorcito")
                     res.sendStatus(401);
-                    res.end();
+                    
                 } else {
                     console.log("daasdasda")
                     //res.sendStatus(200);
                     //res.end();
                     //console.log(res)
+                    res.status(200).send("User Page");
                     console.log("hallooosdaskdaks")
                     
-                    //next();
+
+                    
+                    next();
                 }
 
             }
