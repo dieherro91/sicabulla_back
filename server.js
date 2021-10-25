@@ -76,10 +76,10 @@ app.get('/', async function (req, res, next) {
         //console.log("lac asa rosa da ");
         const token = req.headers.authorization.split('Bearer ')[1];
         const user = jwt_decode(token)['http://localhost/userData'];
-        //console.log("confirmando email...");
+        console.log("confirmando email...");
         await conexion.collection('usuarios').findOne({ email: user.email }, async (err, response) => {
             //console.log("WQEQWEQW")
-            //console.log(user.email)
+            console.log(user.email)
             //console.log("respuesta es:", response)
             if (response) {
                 //console.log(response.estado)
