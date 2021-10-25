@@ -106,7 +106,9 @@ app.use(async (req, res, next) => {
 });
 
 
-
+app.get('/', function (req, res) {
+    res.send('root')
+  })
 
 
 //Consultas a la base de datos archivo ventas
