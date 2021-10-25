@@ -11,15 +11,6 @@ import cors from 'cors'
 
 const port=process.env.PORT || 5000;
 
-app.set( 'port', ( process.env.PORT || 5000 ));
-
-// Start node server
-app.listen( app.get( 'port' ), function() {
-  console.log( 'Node server is running on port ' + app.get( 'port' ));
-  });
-
-
-
 //Conexion de usuario con mongo
 const stringConexion =
     'mongodb+srv://admin:murillo12345678@proyectosicabulla.obypw.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
