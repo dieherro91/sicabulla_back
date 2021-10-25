@@ -88,11 +88,11 @@ app.use(async (req, res, next) => {
                     res.end();
                 } else {
                     console.log("daasdasda")
-                    res.sendStatus(200);
-                    res.end();
+                    //res.sendStatus(200);
+                    //res.end();
                     //console.log(res)
                     console.log("hallooosdaskdaks")
-                    return;
+                    
                     //next();
                 }
 
