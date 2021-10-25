@@ -6,6 +6,8 @@ import Express from 'express';
 import { MongoClient, ObjectId } from 'mongodb';
 import cors from 'cors'
 
+dotenv.config({path:'./env'})
+const port=process.env.PORT || 5000;
 //Conexion de usuario con mongo
 const stringConexion =
     'mongodb+srv://admin:murillo12345678@proyectosicabulla.obypw.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
@@ -29,7 +31,7 @@ const app = Express();
 app.use(Express.json());
 
 app.use(cors({
-    origin: 'https://sicabullaback.herokuapp.com/'
+    origin: 'https://sicabullafront.herokuapp.com/'
 }));
 
 // se trae el codigo del quickstart de la pagina auth0
@@ -60,8 +62,8 @@ const main = () => {
         }
         conexion = db.db('MaestroDeVentas');
         console.log('Conexion exitosa');
-        return app.listen(5000, () => {
-            console.log('Escuchando puerto 5000');
+        return app.listen(port, () => {
+            console.log('Escuchando puerto ',port);
         });
     });
 };

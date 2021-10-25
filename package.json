@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Puente para comunicacion con el front",
   "main": "index.js",
+  "repository": "https://github.com/dieherro91/sicabulla_back.git",
   "author": "Jhon Murillo",
   "license": "MIT",
   "type": "module",
@@ -14,6 +15,7 @@
   },
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "express-jwt": "^6.1.0",
     "express-jwt-auth": "0.0.6",
