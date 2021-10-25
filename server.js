@@ -88,6 +88,7 @@ app.use(async (req, res, next) => {
                     console.log("errorcito")
                     res.sendStatus(401);
                 } else {
+                    res.sendStatus(200);
                     console.log(res)
                     console.log("hallooosdaskdaks")
                 }
