@@ -91,7 +91,7 @@ app.use(async (req, res, next) => {
                     console.log("the response");
                     console.log(response);
                     console.log("end response");
-                    console.log(res.json);
+                    console.log(res);
                     console.log("saasda");
                     next()                 
                 }
