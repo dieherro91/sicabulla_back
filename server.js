@@ -79,6 +79,8 @@ app.use(async (req, res, next) => {
         const user = jwt_decode(token)['https://sicabullafront.herokuapp.com/userData'];
         console.log(user);
         console.log("pase por aqui..");
+        console.log(user.email);
+        console.log("confirmando email...");
         await conexion.collection('usuarios').findOne({ email: user.email }, async (err, response) => {
             console.log("test ....");
             //console.log("respuesta es:", response)
