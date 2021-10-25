@@ -70,17 +70,18 @@ const main = () => {
 
 //middleware para usuario inactivo
 app.use(async (req, res, next) => {
-    console.log('hallo')
+    //console.log('hallo')
     try {
-        console.log("lac asa rosa da ");
+        //console.log("lac asa rosa da ");
         const token = req.headers.authorization.split('Bearer ')[1];
         const user = jwt_decode(token)['http://localhost/userData'];
 
-        console.log("confirmando email...");
+        //console.log("confirmando email...");
         await conexion.collection('usuarios').findOne({ email: user.email }, async (err, response) => {
             console.log("test ....");
             //console.log("respuesta es:", response)
             if (response) {
+                console.log("heroku")
                 if (response.estado === 'inactivo') {
                     console.log("errorcito")
                     res.sendStatus(401);
