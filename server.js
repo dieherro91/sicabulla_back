@@ -71,9 +71,9 @@ const main = () => {
     });
 };
 
-app.get('/', async function (req, res, next) {
-    next();
-    
+app.get('/', function (req, res) {
+    res.json({'estado':'pendiente'});
+    res.sendStatus(200);
 })
 
 //middleware para usuario inactivo
