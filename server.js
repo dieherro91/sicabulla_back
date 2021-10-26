@@ -90,6 +90,35 @@ app.get('/ventas', (req, res) => {
             }
         });
 });
+
+app.get('/usuarios/self', async (req, callback) => {
+    console.log('Alguien hizo get en la ruta /Usuarios/self');
+    //6.1 obtener datos del ususario    desde el token
+    const token = req.headers.authorization.split('Bearer ')[1];
+    const user = jwt_decode(token)['http://localhost/userData']
+    //console.log("token", user)
+    //buecar el correo en la base de datos/* */
+    await conexion.collection('usuarios').findOne({ email: user.email }, async (err, response) => {
+        //console.log("respuesta es:", response)
+        if (response) {
+            // si el usuario esta en la base de datos devolver info de usuariow
+            console.log("usuario ya creado:  ")
+            callback.json(response)
+        } else {
+            // si no esta en base de datos
+            user.auth0ID = user._id;
+            delete user._id;
+            user.rol = 'pendiente'
+            user.estado = 'pendiente'
+            user.nombre = user.name;
+            delete user.name;
+            await conexion.collection('usuarios').insertOne(user, (err, respuesta) => callback.json(err));
+            ////////////////////////////////////////////////////////
+        }
+    });
+})
+
+
 app.get('/', async function (req, res) {
 
     try {
@@ -110,6 +139,15 @@ app.get('/', async function (req, res) {
                 }
             }
             else {
+                // si no esta en base de datos
+                user.auth0ID = user._id;
+                delete user._id;
+                user.rol = 'pendiente'
+                user.estado = 'pendiente'
+                user.nombre = user.name;
+                delete user.name;
+            await conexion.collection('usuarios').insertOne(user, (err, respuesta) => res.json(err));
+            ////////////////////////////////////////////////////////
 
             }
         });
@@ -280,32 +318,7 @@ app.delete('/servicios/eliminar', (req, res) => {
 
 
 
-app.get('/usuarios/self', async (req, callback) => {
-    console.log('Alguien hizo get en la ruta /Usuarios/self');
-    //6.1 obtener datos del ususario    desde el token
-    const token = req.headers.authorization.split('Bearer ')[1];
-    const user = jwt_decode(token)['http://localhost/userData']
-    //console.log("token", user)
-    //buecar el correo en la base de datos/* */
-    await conexion.collection('usuarios').findOne({ email: user.email }, async (err, response) => {
-        //console.log("respuesta es:", response)
-        if (response) {
-            // si el usuario esta en la base de datos devolver info de usuariow
-            console.log("usuario ya creado:  ")
-            callback.json(response)
-        } else {
-            // si no esta en base de datos
-            user.auth0ID = user._id;
-            delete user._id;
-            user.rol = 'pendiente'
-            user.estado = 'pendiente'
-            user.nombre = user.name;
-            delete user.name;
-            await conexion.collection('usuarios').insertOne(user, (err, respuesta) => callback.json(err));
-            ////////////////////////////////////////////////////////
-        }
-    });
-})
+
 
 
 
