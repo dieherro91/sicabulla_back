@@ -12,9 +12,8 @@ import cors from 'cors'
 const port=process.env.PORT || 5000;
 
 //Conexion de usuario con mongo
-const stringConexion ='mongodb+srv://admin:murillo12345678@proyectosicabulla.obypw.mongodb.net/sicabullaDB?retryWrites=true&w=majority';
-//'mongodb+srv://icalpa:<password>@cluster0.rw1mi.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
-    //
+const stringConexion = process.env.MONGO
+
     
 // se importan las librerias para la autenticacion
 // var jwt = require('express-jwt');
