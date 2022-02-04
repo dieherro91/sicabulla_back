@@ -73,25 +73,6 @@ const main = () => {
 
 
  
-
-
-//Consultas a la base de datos archivo ventas
-app.get('/ventas', (req, res) => {
-    console.log('Alguien hizo get en la ruta /Ventas');
-    conexion
-        .collection('ventas')
-        .find({})
-        .toArray((err, result) => {
-            if (err) {
-                res.status(500).send("Error consultando los vehiculos");
-            }
-            else {
-                res.json(result);
-            }
-        });
-});
-
-
 app.get('/', async function (req, res) {
 
     try {
@@ -131,6 +112,27 @@ app.get('/', async function (req, res) {
     //res.json({'estado':'pendiente'});
     
 })
+
+
+
+//Consultas a la base de datos archivo ventas
+app.get('/ventas', (req, res) => {
+    console.log('Alguien hizo get en la ruta /Ventas');
+    conexion
+        .collection('ventas')
+        .find({})
+        .toArray((err, result) => {
+            if (err) {
+                res.status(500).send("Error consultando los vehiculos");
+            }
+            else {
+                res.json(result);
+            }
+        });
+});
+
+
+
 app.post('/ventas/nuevo', (req, res) => {
     //mostrar llaves
     const datosVentas = req.body;
