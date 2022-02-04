@@ -5,9 +5,9 @@
 import Express from 'express';
 import { MongoClient, ObjectId } from 'mongodb';
 import cors from 'cors'
+import dotenv from 'dotenv'
 
-
-
+dotenv.config();
 
 const port=process.env.PORT || 5000;
 
