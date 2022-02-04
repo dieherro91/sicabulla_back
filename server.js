@@ -63,7 +63,7 @@ const main = () => {
         if (err) {
             console.error('Error de conexion a la base de datos');
         }
-        conexion = db.db('MaestroDeVentas');
+        conexion = db.db('sicabullaDB');
         console.log('Conexion exitosa');
         return app.listen(port, () => {
             console.log(`Escuchando puerto ${port}`);
