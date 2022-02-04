@@ -12,9 +12,9 @@ import cors from 'cors'
 const port=process.env.PORT || 5000;
 
 //Conexion de usuario con mongo
-const stringConexion =
-    'mongodb+srv://admin:murillo12345678@proyectosicabulla.obypw.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
-
+const stringConexion ='mongodb+srv://icalpa:<password>@cluster0.rw1mi.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+    //'mongodb+srv://admin:murillo12345678@proyectosicabulla.obypw.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+    
 // se importan las librerias para la autenticacion
 // var jwt = require('express-jwt');
 // var jwks = require('jwks-rsa');
